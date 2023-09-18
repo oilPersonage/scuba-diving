@@ -9,42 +9,52 @@
   -webkit-text-size-adjust: 100%;
 }
 
+html {
+  height: 100%;
+}
+
 body {
   margin: 0;
+  height: 100%;
+  min-height: 100%;
+}
+
+header {
   display: flex;
-  place-items: center;
+  align-items: center;
+  justify-content: center;
+  position: relative;
   min-width: 320px;
-  min-height: 100vh;
+  max-height: 100vh;
+  height: 100%;
   padding: 0 24px;
   background: #e7eced;
 }
-body:before {
+
+.leftBg, .rightBg {
   content: "";
   position: absolute;
   left: 3%;
-  background: url("/scuba-diving/logotype-f35a3b70.svg") no-repeat;
-  width: 25%;
-  height: 100%;
-  background-position: center;
-}
-body:after {
-  content: "";
-  position: absolute;
-  right: 3%;
+  top: 0;
   background: url("/scuba-diving/logotype-f35a3b70.svg") no-repeat;
   width: 25%;
   height: 100%;
   background-position: center;
 }
 
-header {
+.rightBg {
+  left: auto;
+  right: 3%;
+}
+
+.content {
+  position: relative;
+  z-index: 2;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 100%;
-  position: relative;
-  z-index: 2;
+  margin: 2rem 0;
 }
 
 ul {
@@ -58,7 +68,6 @@ ul li {
 
 .heading {
   color: #31A3DF;
-  margin: 2rem 0;
 }
 .heading p {
   text-align: center;
@@ -68,6 +77,10 @@ ul li {
   font-size: 2.5rem;
   margin: 0;
   text-transform: uppercase;
+  text-align: center;
+}
+.heading h2 {
+  margin-bottom: 2rem;
 }
 
 h1 {
@@ -140,18 +153,15 @@ svg, a {
 }
 
 @media screen and (max-width: 610px) {
-  body:after {
-    content: none;
+  .leftBg {
+    display: none;
   }
-  body:before {
+  .rightBg {
     left: 0;
     width: 100%;
     height: 40%;
     top: 0;
     background-size: 50%;
-  }
-  header {
-    padding: 1rem 0;
   }
   .actions {
     flex-wrap: wrap;
@@ -188,6 +198,13 @@ svg, a {
   }
 }
 @media screen and (max-width: 400px) {
+  body:before {
+    left: 0;
+    width: 100%;
+    height: 30%;
+    top: 0;
+    background-size: 40%;
+  }
   .logotype {
     height: 4rem;
     width: 4rem;
