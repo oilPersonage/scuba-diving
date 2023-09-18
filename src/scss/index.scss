@@ -14,46 +14,50 @@ $accent: #31A3DF;
 $green: #38E057;
 $purp: #7160EC;
 $dark: #1A212D;
-
+html {
+  height: 100%;
+}
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-  padding: 0 24px;
-  background: #e7eced;
-
-
-  &:before {
-    content: '';
-    position: absolute;
-    left: 3%;
-    background: url("../../public/logotype.svg") no-repeat;
-    width: 25%;
-    height: 100%;
-    background-position: center;
-  }
-
-  &:after {
-    content: '';
-    position: absolute;
-    right: 3%;
-    background: url("../../public/logotype.svg") no-repeat;
-    width: 25%;
-    height: 100%;
-    background-position: center;
-  }
+  height: 100%;
+  min-height: 100%;
 }
 
 header {
   display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  min-width: 320px;
+  max-height: 100vh;
+  height: 100%;
+  padding: 0 24px;
+  background: #e7eced;
+}
+
+.leftBg, .rightBg {
+    content: '';
+    position: absolute;
+    left: 3%;
+    top: 0;
+    background: url("../../public/logotype.svg") no-repeat;
+    width: 25%;
+    height: 100%;
+    background-position: center;
+}
+.rightBg {
+  left: auto;
+  right: 3%;
+}
+
+.content {
+  position: relative;
+  z-index: 2;
+  display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 100%;
-  position: relative;
-  z-index: 2;
+  margin: 2rem 0;
 }
 
 ul {
@@ -67,7 +71,6 @@ ul {
 
 .heading {
   color: $accent;
-  margin: 2rem 0;
 
   p {
     text-align: center;
@@ -78,6 +81,11 @@ ul {
     font-size: 2.5rem;
     margin: 0;
     text-transform: uppercase;
+    text-align: center;
+  }
+
+  h2 {
+    margin-bottom: 2rem;
   }
 }
 
@@ -159,21 +167,16 @@ svg, a {
 
 
 @media screen and (max-width: 610px) {
-  body {
-    &:after {
-      content: none;
-    }
-
-    &:before {
-      left: 0;
-      width: 100%;
-      height: 40%;
-      top: 0;
-      background-size: 50%;
-    }
+  .leftBg{
+    display: none;
   }
-  header {
-    padding: 1rem 0;
+
+  .rightBg {
+    left: 0;
+    width: 100%;
+    height: 40%;
+    top: 0;
+    background-size: 50%;
   }
   .actions {
     flex-wrap: wrap;
@@ -222,6 +225,15 @@ svg, a {
 
 
 @media screen and (max-width: 400px) {
+  body {
+    &:before {
+      left: 0;
+      width: 100%;
+      height: 30%;
+      top: 0;
+      background-size: 40%;
+    }
+  }
   .logotype {
     height: 4rem;
     width: 4rem;
